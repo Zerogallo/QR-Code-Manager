@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1>Bem-vindo ao QR Code Manager</h1>
+        <p class="lead">Sistema completo para gerar e ler QR Codes</p>
+        
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerar QR Code</h5>
+                        <p class="card-text">Crie QR Codes personalizados para textos, URLs, etc.</p>
+                        <a href="{{ url_for('generator') }}" class="btn btn-primary">Gerar QR Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ler QR Code</h5>
+                        <p class="card-text">Faça upload de uma imagem para decodificar QR Codes.</p>
+                        <a href="{{ url_for('reader') }}" class="btn btn-success">Ler QR Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Histórico</h5>
+                        <p class="card-text">Veja o histórico de QR Codes gerados e lidos.</p>
+                        <a href="{{ url_for('history') }}" class="btn btn-info">Ver Histórico</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

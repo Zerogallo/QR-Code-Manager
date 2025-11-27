@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Histórico de QR Codes</h2>
+        
+        <div class="mb-3">
+            <a href="{{ url_for('export_data') }}" class="btn btn-success">Exportar para Excel</a>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Dados</th>
+                        <th>Tipo</th>
+                        <th>Arquivo</th>
+                        <th>Data de Criação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for qr in qr_codes %}
+                    <tr>
+                        <td>{{ qr['id'] }}</td>
+                        <td>
+                            {% if qr['data']|length > 50 %}
+                                {{ qr['data'][:50] }}...
+                            {% else %}
+                                {{ qr['data'] }}
+                            {% endif %}
+                        </td>
+                        <td>{{ qr['type'] }}</td>
+                        <td>
+                            {% if qr['filename'] %}
+                                <a href="{{ url_for('static', filename='qr_codes/' + qr['filename']) }}" target="_blank">
+                                    {{ qr['filename'] }}
+                                </a>
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>{{ qr['created_at'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        {% if not qr_codes %}
+            <div class="alert alert-info" role="alert">
+                Nenhum QR Code encontrado no histórico.
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

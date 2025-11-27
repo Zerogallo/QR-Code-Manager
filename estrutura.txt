@@ -1,0 +1,15 @@
+qr_code_project/
+│
+├── app.py
+├── database.py
+├── models.py
+├── templates/
+│   ├── index.html
+│   ├── generator.html
+│   ├── reader.html
+│   └── history.html
+├── static/
+│   ├── style.css
+│   └── qr_codes/
+├── requirements.txt
+└── README.md 
